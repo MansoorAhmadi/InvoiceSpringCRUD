@@ -4,6 +4,7 @@ import com.bluebird.JPA_Repository.InvoiceRepository;
 import com.bluebird.model.Invoice;
 import com.bluebird.service.api.IInvoice;
 import com.bluebird.service.impl.InvoiceDAO;
+import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
@@ -19,6 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
@@ -30,11 +33,14 @@ public class InvoiceTest {
     @Named("dao")
     InvoiceDAO dao;
 
-    private IInvoice repository;
-
     @Inject
-    @Named("dataSource")
-    DataSource dataSource;
+    SessionFactory factory;
+
+//    private InvoiceRepository repository;
+
+//    @Inject
+//    @Named("dataSource")
+//    DataSource dataSource;
 
     @Test
     public void saveTest(){
@@ -53,24 +59,23 @@ public class InvoiceTest {
         invoice.setVendor("ForestHill");
         invoice.setComments("MArk always pays on time !");
 
-
-        repository.create(invoice);
+        dao.create(invoice);
         LOGGER.info(invoice);
 
         //then
         Assert.assertNotNull(invoice);
     }
 
-    @Test
-    public void connectionTest() throws SQLException {
-        //given
-        Connection connection = dataSource.getConnection();
-
-        //when
-        String schema = connection.getSchema();
-
-        //then
-        Assert.assertEquals("PUBLIC", schema);
-    }
+//    @Test
+//    public void connectionTest() throws SQLException {
+//        //given
+//        Connection connection = dataSource.getConnection();
+//
+//        //when
+//        String schema = connection.getSchema();
+//
+//        //then
+//        Assert.assertEquals("PUBLIC", schema);
+//    }
 
 }

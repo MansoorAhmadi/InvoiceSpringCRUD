@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.bluebird.datamodel.InvoiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.152 s <<< FAILURE! - in com.bluebird.datamodel.InvoiceTest
+saveTest  Time elapsed: 0.021 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.bluebird.service.impl.InvoiceDAO.create(com.bluebird.model.Invoice)" because "this.dao" is null
+	at com.bluebird.datamodel.InvoiceTest.saveTest(InvoiceTest.java:62)
+

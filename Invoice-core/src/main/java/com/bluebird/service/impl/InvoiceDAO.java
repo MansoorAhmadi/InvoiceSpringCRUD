@@ -3,6 +3,7 @@ package com.bluebird.service.impl;
 import com.bluebird.JPA_Repository.InvoiceRepository;
 import com.bluebird.model.Invoice;
 import com.bluebird.service.api.IInvoice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -18,6 +19,10 @@ public class InvoiceDAO extends GenericInvoice<Invoice> implements IInvoice {
     public List<Invoice> findInvoiceById(String id){
         return repository.findInvoiceById(id);
     }
+
+//    public List<Invoice> save(Invoice invoice){
+//        return repository.saveAll(invoice);
+//    }
 
 
 }
