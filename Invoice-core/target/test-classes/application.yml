@@ -1,0 +1,6 @@
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/Invoice
+    username: postgres
+    password: jasmine
+    pool-size: 30
