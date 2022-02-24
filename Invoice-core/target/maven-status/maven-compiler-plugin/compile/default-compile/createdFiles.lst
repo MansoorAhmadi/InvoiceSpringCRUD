@@ -1,0 +1,7 @@
+com/bluebird/JPA_Repository/FakeInvoice.class
+com/bluebird/JPA_Repository/InvoiceRepository.class
+com/bluebird/model/Invoice.class
+com/bluebird/service/impl/GenericInvoice.class
+com/bluebird/service/impl/InvoiceDAO.class
+com/bluebird/service/api/IInvoice.class
+com/bluebird/error/ErrorHandler.class
