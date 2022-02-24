@@ -5,10 +5,22 @@ import com.bluebird.model.Invoice;
 import com.bluebird.service.api.IInvoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.inject.Inject;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
 public class InvoiceDAO extends GenericInvoice<Invoice> implements IInvoice {
+
+    @Inject
+    DataSource dataSource;
+
+    public Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
+    }
 
     private InvoiceRepository repository;
 
@@ -16,13 +28,14 @@ public class InvoiceDAO extends GenericInvoice<Invoice> implements IInvoice {
         return repository.findAll();
     }
 
-    public List<Invoice> findInvoiceById(String id){
-        return repository.findInvoiceById(id);
-    }
 
-//    public List<Invoice> save(Invoice invoice){
-//        return repository.saveAll(invoice);
+//    public List<Invoice> findInvoiceById(String id){
+//        return repository.findInvoiceById(id);
 //    }
+
+    public void save(Invoice invoice){
+        repository.save(invoice);
+    }
 
 
 }

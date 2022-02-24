@@ -13,34 +13,39 @@ import javax.sql.DataSource;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Assert;
-import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+
 @ContextConfiguration("/applicationContext.xml")
 public class InvoiceTest {
 
     private static final Logger LOGGER = LogManager.getLogger(InvoiceTest.class);
 
+
+    @Inject
+    DataSource dataSource;
+
+
     @Inject
     @Named("dao")
     InvoiceDAO dao;
 
-    @Inject
-    SessionFactory factory;
+    private InvoiceRepository repository;
 
-//    private InvoiceRepository repository;
 
-//    @Inject
-//    @Named("dataSource")
-//    DataSource dataSource;
+    @Test
+    public void connectionTest() throws SQLException {
+
+
+    }
+
 
     @Test
     public void saveTest(){
@@ -51,19 +56,19 @@ public class InvoiceTest {
 //        SELECT ID, NAME, AMOUNT, FINAL_AMOUNT, NUMBER, RECEIVED_DATE, TYPE, VENDOR, COMMENTS FROM Invoice
         invoice.setId("1");
         invoice.setName("Mark");
-        invoice.setAmount(1000);
-        invoice.setFinalAmount(15000);
-        invoice.setNumber("0033768787878");
-        invoice.setReceivedDate("22-02-2022-MM-16-50");
-        invoice.setType("February");
-        invoice.setVendor("ForestHill");
-        invoice.setComments("MArk always pays on time !");
+//        invoice.setAmount(1000);
+//        invoice.setFinalAmount(15000);
+//        invoice.setNumber("0033768787878");
+//        invoice.setReceivedDate("22-02-2022-MM-16-50");
+//        invoice.setType("February");
+//        invoice.setVendor("ForestHill");
+//        invoice.setComments("MArk always pays on time !");
 
-        dao.create(invoice);
-        LOGGER.info(invoice);
+        dao.save(invoice);
+//        LOGGER.info(invoice);
 
         //then
-        Assert.assertNotNull(invoice);
+//        Assert.assertNotNull(invoice);
     }
 
 //    @Test
